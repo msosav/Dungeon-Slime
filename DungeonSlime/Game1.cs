@@ -13,6 +13,8 @@ public class Game1 : Core
 
     private AnimatedSprite _bat;
 
+    private AnimatedSprite _gangster;
+
     public Game1() : base(title: "Dungeon Slime", width: 1280, height: 720, fullScreen: false)
     {
     }
@@ -28,12 +30,15 @@ public class Game1 : Core
     {
         // TODO: use this.Content to load your game content here
         TextureAtlas atlas = TextureAtlas.FromFile(Content, "Images/atlas-definition.xml");
+        TextureAtlas gangsterAtlas = TextureAtlas.FromFile(Content, "Images/gangster-atlas-definition.xml");
 
         _slime = atlas.CreateAnimatedSprite("slime-animation");
         _slime.Scale = new Vector2(4.0f, 4.0f);
 
         _bat = atlas.CreateAnimatedSprite("bat-animation");
         _bat.Scale = new Vector2(4.0f, 4.0f);
+
+        _gangster = gangsterAtlas.CreateAnimatedSprite("gangster-animation");
 
         base.LoadContent();
     }
@@ -47,6 +52,7 @@ public class Game1 : Core
 
         _slime.Update(gameTime);
         _bat.Update(gameTime);
+        _gangster.Update(gameTime);
 
         base.Update(gameTime);
     }
@@ -61,6 +67,8 @@ public class Game1 : Core
 
         _slime.Draw(SpriteBatch, Vector2.Zero);
         _bat.Draw(SpriteBatch, new Vector2(_slime.Width, 0));
+
+        _gangster.Draw(SpriteBatch, new Vector2(_slime.Width + _bat.Width, 0));
 
         // Always end the sprite batch when finished.
         SpriteBatch.End();

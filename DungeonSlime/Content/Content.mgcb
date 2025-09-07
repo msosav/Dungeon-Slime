@@ -28,6 +28,21 @@
 /processorParam:TextureFormat=Color
 /build:Images/atlas.png
 
+#begin Images/gangster-atlas-definition.xml
+/copy:Images/gangster-atlas-definition.xml
+
+#begin Images/Idle_gangster.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Images/Idle_gangster.png
+
 #begin Images/logo.png
 /importer:TextureImporter
 /processor:TextureProcessor
