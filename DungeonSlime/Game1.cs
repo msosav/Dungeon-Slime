@@ -9,11 +9,9 @@ namespace DungeonSlime;
 
 public class Game1 : Core
 {
-    private Texture2D _logo;
+    private Sprite _slime;
 
-    private TextureRegion _slime;
-
-    private TextureRegion _bat;
+    private Sprite _bat;
 
     public Game1() : base(title: "Dungeon Slime", width: 1280, height: 720, fullScreen: false)
     {
@@ -31,8 +29,11 @@ public class Game1 : Core
         // TODO: use this.Content to load your game content here
         TextureAtlas atlas = TextureAtlas.FromFile(Content, "Images/atlas-definition.xml");
 
-        _slime = atlas.GetRegion("slime");
-        _bat = atlas.GetRegion("bat");
+        _slime = atlas.CreateSprite("slime");
+        _slime.Scale = new Vector2(4.0f, 4.0f);
+
+        _bat = atlas.CreateSprite("bat");
+        _bat.Scale = new Vector2(4.0f, 4.0f);
 
         base.LoadContent();
     }
@@ -55,8 +56,8 @@ public class Game1 : Core
         // Begin the sprite batch to prepare for rendering.
         SpriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
-        _slime.Draw(SpriteBatch, Vector2.Zero, Color.White, 0.0f, Vector2.One, 4.0f, SpriteEffects.None, 0.0f);
-        _bat.Draw(SpriteBatch, new Vector2(_slime.Width * 4.0f + 10, 0), Color.White, 0.0f, Vector2.One, 4.0f, SpriteEffects.None, 0.0f);
+        _slime.Draw(SpriteBatch, Vector2.Zero);
+        _bat.Draw(SpriteBatch, new Vector2(_slime.Width, 0));
 
         // Always end the sprite batch when finished.
         SpriteBatch.End();
